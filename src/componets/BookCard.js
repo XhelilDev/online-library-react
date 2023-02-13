@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom'
                     <h5 className="card-title" style={{fontSize: "14px"}}>{book.title.substring(0,20)}</h5>
                     <p>{book.authors['name']}</p>
  
-                    <Link to={`/books/${book.id}`} className="btn btn-outline-primary">Details</Link>
+                    <Link to={`/books/${book.id}`} className="btn btn-outline-primary">Download</Link>
                 </div>
             </div>
         )

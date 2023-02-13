@@ -79,7 +79,7 @@ const BookbyAuthoryear = () => {
                 </div>) }
  
         <div>
-  <ul style={{listStyleType:'none',display:'flex',justifyContent:'space-between',width:'200px'}}>
+  <ul style={{listStyleType:'none',width:'200px',display:'flex',justifyContent:'space-between',margin:'20px auto'}}>
       <li onClick={()=>setPage(page=>page-=1)} >
           Preeview
       </li>

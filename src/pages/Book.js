@@ -30,7 +30,7 @@ function Book() {
             console.error(error)
         });
     }, [id])
-
+   
 
   return (
     <div className="container my-5">
@@ -43,7 +43,9 @@ function Book() {
                 </div>
                 <div className="col-lg-7 col-md-7 col-sm-12">
                 <h4 > {book.title}</h4>
-                <h5 > {book.authors[0]['name']}</h5>
+
+                <h5 > {book.authors.length > 0 ? book.authors[0]['name'] : 'Unknown Author'}</h5>
+                
                 
                 <table style={{border: '1px solid black'}}>
               <thead>

@@ -1,39 +1,62 @@
+// File: Login.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Login = ({ setAuth }) => {
-  const [email, setEmail] = useState('');
+const Login = () => {
+    const [isSignedIn, setIsSignedIn] = useState(null)
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleLogin = () => {
-    const hardcodedEmail = 'admin@example.com';
-    const hardcodedPassword = 'secret';
-
-    if (email === hardcodedEmail && password === hardcodedPassword) {
-      localStorage.setItem('email', email);
-      localStorage.setItem('password', password);
-      setAuth({ token: true });
-    } else {
-      console.log('Invalid email or password');
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  
+    // Set the username and password in local storage if they haven't already been set
+    // if (!localStorage.getItem('username')) {
+    //   localStorage.setItem('username', 'xhelo');
+    // }
+    // if (!localStorage.getItem('password')) {
+    //   localStorage.setItem('password', '12345');
+    // }
+  
+    // const storedUsername = localStorage.getItem('username');
+    // const storedPassword = localStorage.getItem('password');
+    // if (username === storedUsername && password === storedPassword) {
+    //   navigate('/home');
+    // } else {
+    //   alert('Incorrect username or password. Please try again.');
+    // }
+    // const signin = () => {
+        localStorage.setItem("username", username);
+        localStorage.setItem("password", password);
+        setIsSignedIn(true);
+        navigate('/home');
+      //};
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <label>
-        email:
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        username:
+        <input
+          type="text"
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+        />
       </label>
       <br />
       <br />
       <label>
         password:
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input
+          type="password"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        />
       </label>
       <br />
       <br />
-      <button type="button" onClick={handleLogin}>
-        Submit
-      </button>
+      <button type="submit">Login</button>
     </form>
   );
 };
